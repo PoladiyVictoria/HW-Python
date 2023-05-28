@@ -11,7 +11,7 @@ p = int(input('Введите произведение чисел X и Y: '))
 for x in range(s):
     for y in range(s):
         if x + y == s:
-                break
+            break
     if x * y == p:
         print(f'Петя загадал числа {x} и {y}')
         break
