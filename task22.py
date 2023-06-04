@@ -9,9 +9,9 @@ first_set = set()
 second_set = set()
 import random
 for _ in range(n):
-    first_set.add(random.randint(1, 30))
+    first_set.add(random.randint(1, 50))
 for _ in range(m):
-    second_set.add(random.randint(1, 30))
+    second_set.add(random.randint(1, 50))
 print(first_set)
 print(second_set)
 first_set = first_set.intersection(second_set)
