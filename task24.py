@@ -15,7 +15,7 @@ number_of_berries = []
 sum_berries = []
 import random
 for _ in range(n):
-    number_of_berries.append(random.randint(1, 11))
+    number_of_berries.append(random.randint(1, 101))
 print(number_of_berries)
 for i in range(len(number_of_berries)):
     sum = 0
