@@ -27,11 +27,21 @@ def Read_phonebook():
                 if number == num:
                     print(person)
 
+def Entry_phonebook():
+    with open('E:\Домашка\HW Python\Task38\phonebook.txt', 'a', encoding='utf-8') as f_entry:
+        print('Введите нового абонента:')
+        name = input('Введите Ф.И.О: ')
+        number = input('Введите номер телефона: ')
+        f_entry.writelines('\n')
+        f_entry.writelines(f'{name}: {number}')
+
 
 print('Добро пожаловать в телефонный справочник!')
 print('Выберите режим работы со справочником:')
 mode = int(input('1 - чтение, 2 - запись: '))
 if mode == 1:
     Read_phonebook()
-
-
+elif mode == 2:
+    Entry_phonebook()
+else:
+    print('Не корректный режим')
