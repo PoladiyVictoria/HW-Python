@@ -35,13 +35,59 @@ def Entry_phonebook():
         f_entry.writelines('\n')
         f_entry.writelines(f'{name}: {number}')
 
+def Change_phonebook():
+    print('Что вы хотите изменить?')
+    mod1 = int(input('1 - человека, 2 - № телефона: '))
+    with open('E:\Домашка\HW Python\Task38\phonebook.txt', 'r', encoding='utf-8') as f_change:
+        book = f_change.read().splitlines()
+        book = list(book)
+        human = input('Введите фамилию, имя или отчество: ')
+        for person in book:
+            some_man = person.split(':')
+            buf = some_man[0]
+            number = str(some_man[1])
+            if buf == human:
+                if mod1 == 1:
+                    new_man = input('Введите новое Ф.И.О: ')
+                    book.remove(person)
+                    person = new_man + ': ' + number
+                    book.append(person)
+                if mod1 == 2:
+                    new_num = input('Введите новый номер: ')
+                    book.remove(person)
+                    person = buf + ': ' + new_num
+                    book.append(person)
+            else:
+                name = buf.split()
+                for partname in name:
+                    if partname == human:
+                        if mod1 == 1:
+                            new_man = input('Введите новое Ф.И.О: ')
+                            book.remove(person)
+                            person = new_man + ': ' + number
+                            book.append(person)
+                        if mod1 == 2:
+                            new_num = input('Введите новый номер: ')
+                            book.remove(person)
+                            person = buf + ': ' + new_num
+                            book.append(person)
+        with open('E:\Домашка\HW Python\Task38\phonebook.txt', 'w', encoding='utf-8') as f_change1:
+            for person in book:
+                if person == book[0]:
+                    f_change1.writelines(person)
+                else:
+                    f_change1.writelines('\n')
+                    f_change1.writelines(person)
+
 
 print('Добро пожаловать в телефонный справочник!')
 print('Выберите режим работы со справочником:')
-mode = int(input('1 - чтение, 2 - запись: '))
+mode = int(input('1 - чтение, 2 - запись, 3 - изменение: '))
 if mode == 1:
     Read_phonebook()
 elif mode == 2:
     Entry_phonebook()
+elif mode == 3:
+    Change_phonebook()
 else:
     print('Не корректный режим')
